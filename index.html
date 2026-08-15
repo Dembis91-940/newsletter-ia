@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA Pratique — Chaque semaine, une technique IA à appliquer le jour même</title>
+<meta name="description" content="IA Pratique : la newsletter hebdomadaire gratuite pour alternants, étudiants et débutants tech. Chaque semaine, une technique IA que vous pouvez appliquer le jour même. Zéro jargon, 5 minutes par semaine.">
+<meta property="og:title" content="IA Pratique — L'IA qui se retient, c'est l'IA qu'on applique">
+<meta property="og:description" content="Chaque semaine, une technique IA que vous pouvez appliquer le jour même. Gratuit. Pour alternants, étudiants et débutants tech.">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Newsletter","name":"IA Pratique","description":"Chaque semaine, une technique IA que vous pouvez appliquer le jour même. Gratuit.","inLanguage":"fr","publisher":{"@type":"Organization","name":"IA Pratique"}}</script>
+<style>
+:root{
+  --abyss:#041019; --paper:#f8f7f3; --ink:#111313; --muted:#707575;
+  --frost:#eef7f8; --electric:#064BD9; --line:rgba(17,19,19,.14);
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:Inter,"Helvetica Neue",Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--abyss);color:var(--frost);line-height:1.6;overflow-x:hidden}
+canvas#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+main,header,footer,section{position:relative;z-index:1}
+.kicker{font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-size:clamp(2.5rem,6vw,4.9rem);font-weight:800;line-height:1.06;letter-spacing:-.02em}
+h2{font-size:clamp(1.9rem,4vw,3.3rem);font-weight:800;line-height:1.08;letter-spacing:-.01em}
+h2 em{font-style:normal;color:var(--electric)}
+p{color:var(--muted)}
+.serif{font-family:var(--serif);font-weight:600;letter-spacing:0}
+.btn{display:inline-block;background:var(--electric);color:#fff;text-decoration:none;font-weight:700;
+  padding:.95rem 1.7rem;border-radius:8px;font-size:.95rem;border:none;cursor:pointer;transition:transform .2s,filter .2s;position:relative;overflow:hidden}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.btn-ghost{background:transparent;color:var(--frost);border:1px solid rgba(238,247,248,.35)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+/* ===== HEADER ===== */
+header{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5vw;border-bottom:1px solid rgba(238,247,248,.1);backdrop-filter:blur(8px)}
+.logo{display:flex;align-items:baseline;gap:.7rem}
+.logo strong{font-size:1.1rem;letter-spacing:.06em;color:var(--frost)}
+.logo strong i{font-style:normal;color:var(--electric)}
+.logo span{font-size:.6rem;letter-spacing:.22em;color:var(--muted);text-transform:uppercase}
+nav{display:flex;gap:1.8rem}
+nav a{color:var(--frost);text-decoration:none;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;opacity:.85;transition:opacity .2s}
+nav a:hover{opacity:1}
+/* ===== HERO FORGE ===== */
+.hero{padding:7.5rem 5vw 4.5rem}
+.hero .forge{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap}
+.hero .forge button{background:none;border:1px solid rgba(238,247,248,.2);color:var(--muted);font-size:.7rem;
+  letter-spacing:.2em;text-transform:uppercase;padding:.4rem .95rem;border-radius:99px;cursor:pointer;transition:.2s;font-family:var(--sans)}
+.hero .forge button.active{color:var(--frost);border-color:var(--electric);background:rgba(6,75,217,.15)}
+.hero h1{margin:1.2rem 0 1.4rem}
+.hero .row{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-top:1.9rem}
+.hero .promise{font-size:.85rem;color:var(--muted);margin-top:1.1rem;letter-spacing:.04em}
+.hero .promise strong{color:var(--frost);font-weight:700}
+/* ===== FILM : LE RYTHME ===== */
+.film{background:var(--paper);color:var(--ink);padding:5rem 5vw}
+.film h2{color:var(--ink);margin:.6rem 0 2.5rem}
+.scenes{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.2rem}
+.scene{border:1px solid var(--line);border-radius:12px;padding:1.7rem;background:#fff;transition:transform .25s,box-shadow .25s}
+.scene:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(17,19,19,.08)}
+.scene .tag{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--electric);font-weight:700}
+.scene h3{font-family:var(--serif);font-size:1.25rem;margin:.6rem 0;font-weight:600}
+.scene p{font-size:.86rem;color:var(--muted)}
+/* ===== TRIADE + COMPTEURS ===== */
+.triade{background:var(--abyss);padding:4.5rem 5vw;text-align:center}
+.triade .checks{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;margin-bottom:1.8rem}
+.triade .checks span{color:var(--electric);font-weight:700;font-size:1rem}
+.triade h2{color:var(--frost)}
+.counters{display:flex;justify-content:center;gap:3.4rem;flex-wrap:wrap;margin-top:2.4rem}
+.counter .num{font-size:2.7rem;font-weight:800;color:var(--electric)}
+.counter .lbl{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.counter .src{font-size:.68rem;color:var(--muted);opacity:.75;margin-top:.2rem}
+/* ===== NUMÉROS ===== */
+.numeros{background:var(--paper);color:var(--ink);padding:5rem 5vw}
+.numeros h2{color:var(--ink);margin:.6rem 0 1rem}
+.numeros .intro{max-width:620px;margin-bottom:2.6rem}
+.issues{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem}
+.issue{border:1px solid var(--line);border-radius:14px;padding:1.8rem;background:#fff;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;gap:.7rem;transition:transform .25s,box-shadow .25s,border-color .25s}
+.issue:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(17,19,19,.1);border-color:var(--electric)}
+.issue .num{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--electric);font-weight:700}
+.issue h3{font-family:var(--serif);font-size:1.45rem;font-weight:600;line-height:1.2}
+.issue .meta{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.issue p{font-size:.86rem;color:var(--muted);flex:1}
+.issue .go{font-size:.78rem;font-weight:700;color:var(--electric);letter-spacing:.06em}
+.quote{max-width:760px;margin:3.2rem auto 0;text-align:center;padding:0 1rem}
+.quote blockquote{font-family:var(--serif);font-size:clamp(1.3rem,2.6vw,1.9rem);font-weight:600;line-height:1.35;color:var(--ink)}
+.quote .who{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:1rem}
+/* ===== POUR QUI ===== */
+.pourqui{background:var(--abyss);padding:5rem 5vw}
+.pourqui h2{color:var(--frost)}
+.profiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;margin-top:2.5rem}
+.profile{border:1px solid rgba(238,247,248,.16);border-radius:14px;padding:1.8rem;background:rgba(238,247,248,.03);transition:transform .25s,border-color .25s}
+.profile:hover{transform:translateY(-5px);border-color:var(--electric)}
+.profile .ico{font-size:1.5rem}
+.profile h3{font-size:1.02rem;font-weight:800;margin:.7rem 0 .4rem}
+.profile p{font-size:.85rem;color:var(--muted)}
+/* ===== INSCRIPTION ===== */
+.inscription{background:var(--paper);color:var(--ink);padding:5rem 5vw}
+.inscription h2{color:var(--ink);margin:.6rem 0 1.4rem}
+.inscription .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:start}
+.inscription .promos{list-style:none}
+.inscription .promos li{font-size:.9rem;color:var(--muted);padding:.35rem 0}
+.inscription .promos li::before{content:"✓";color:var(--electric);font-weight:700;margin-right:.6rem}
+.inscription form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.8rem}
+.field{display:flex;flex-direction:column;gap:.35rem}
+.field label{font-size:.78rem;font-weight:600;color:var(--ink)}
+.field input,.field select{border:1px solid var(--line);border-radius:8px;padding:.85rem 1rem;font-size:.92rem;background:#fff;color:var(--ink);transition:border-color .2s;font-family:var(--sans)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--electric)}
+.inscription form .btn{grid-column:1/-1;justify-self:start}
+.note{font-size:.75rem;color:var(--muted);margin-top:1rem}
+.err{font-size:.78rem;color:#b3261e;font-weight:600}
+/* ===== FAQ ===== */
+.faq{background:var(--abyss);padding:5rem 5vw}
+.faq h2{color:var(--frost)}
+.qa{max-width:760px;margin:2.2rem auto 0}
+details{border:1px solid rgba(238,247,248,.14);border-radius:12px;margin-bottom:.8rem;padding:1.1rem 1.4rem;background:rgba(238,247,248,.03)}
+summary{cursor:pointer;font-weight:700;color:var(--frost);font-size:.95rem;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::after{content:"+";color:var(--electric);font-size:1.2rem;font-weight:700;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{font-size:.88rem;margin-top:.7rem}
+/* ===== FOOTER ===== */
+footer{padding:2.5rem 5vw;text-align:center;font-size:.8rem;color:var(--muted);border-top:1px solid rgba(238,247,248,.08)}
+footer a{color:var(--frost);text-decoration:none}
+/* ===== CHATBOT ===== */
+#chatBtn{position:fixed;bottom:22px;right:22px;z-index:99;width:58px;height:58px;border-radius:50%;background:var(--electric);
+  color:#fff;border:none;font-size:1.5rem;cursor:pointer;box-shadow:0 8px 24px rgba(6,75,217,.45);transition:transform .2s}
+#chatBtn:hover{transform:scale(1.08)}
+#chatBox{position:fixed;bottom:92px;right:22px;z-index:99;width:320px;max-width:calc(100vw - 44px);background:#fff;color:var(--ink);
+  border-radius:14px;box-shadow:0 16px 48px rgba(4,16,25,.35);display:none;flex-direction:column;overflow:hidden}
+#chatBox.open{display:flex}
+#chatHead{background:var(--abyss);color:var(--frost);padding:.9rem 1.1rem;font-weight:700;font-size:.9rem}
+#chatMsgs{height:260px;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.5rem;font-size:.85rem}
+#chatMsgs .bot{background:#f1f3f6;padding:.55rem .8rem;border-radius:10px 10px 10px 2px;align-self:flex-start;max-width:88%}
+#chatMsgs .me{background:var(--electric);color:#fff;padding:.55rem .8rem;border-radius:10px 10px 2px 10px;align-self:flex-end;max-width:88%}
+#chatQuick{display:flex;gap:.4rem;flex-wrap:wrap;padding:0 1rem .6rem}
+#chatQuick button{background:#f1f3f6;border:none;border-radius:99px;padding:.35rem .7rem;font-size:.72rem;cursor:pointer;color:var(--ink);font-family:var(--sans)}
+#chatInputRow{display:flex;border-top:1px solid var(--line)}
+#chatInput{flex:1;border:none;padding:.85rem 1rem;font-size:.85rem}
+#chatSend{background:var(--electric);color:#fff;border:none;padding:0 1.1rem;font-size:1rem;cursor:pointer}
+@media(max-width:880px){.inscription .wrap{grid-template-columns:1fr}}
+@media(max-width:700px){nav{display:none}}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+  <div class="logo"><strong>IA<i>·</i>PRATIQUE</strong><span>APPLIQUER, PAS THÉORISER</span></div>
+  <nav>
+    <a href="#numeros">LES NUMÉROS</a>
+    <a href="#pourqui">POUR QUI</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="btn" href="#inscription">S'ABONNER — GRATUIT ↗</a>
+</header>
+
+<!-- HERO FORGE : LIRE → APPLIQUER → MAÎTRISER -->
+<section class="hero" id="hero">
+  <div class="forge">
+    <button class="active" data-step="0">00 · LIRE</button>
+    <button data-step="1">01 · APPLIQUER</button>
+    <button data-step="2">02 · MAÎTRISER</button>
+  </div>
+  <h1 id="heroTitle">L'IA qui se retient,<br><em style="color:var(--electric)">c'est l'IA qu'on applique.</em></h1>
+  <p id="heroSub" style="max-width:600px">Chaque semaine, une technique IA que vous pouvez appliquer le jour même. Gratuit. Pour alternants, étudiants et débutants tech qui veulent des compétences, pas des slides.</p>
+  <div class="row">
+    <a class="btn" href="#inscription">Recevoir le numéro 1 gratuitement →</a>
+  </div>
+  <p class="promise">Prochain numéro : <strong>« Vos premiers agents IA en 30 minutes »</strong> — lundi prochain, dans votre boîte mail.</p>
+</section>
+
+<!-- FILM : LES 3 ARGUMENTS -->
+<section class="film" id="film">
+  <div class="kicker reveal">01 · LE CONTRAT</div>
+  <h2 class="reveal">Trois promesses, <em>tenues chaque semaine.</em></h2>
+  <div class="scenes">
+    <div class="scene reveal"><div class="tag">01 · ACTIONNABLE</div><h3>Une technique, un jour.</h3><p>Pas un cours de six heures : une seule technique, expliquée puis appliquée sur un cas réel, du début à la fin.</p></div>
+    <div class="scene reveal"><div class="tag">02 · ZÉRO JARGON</div><h3>Expliqué comme à un collègue.</h3><p>Chaque terme est défini en français simple. Si un mot compliqué apparaît, il est traduit avant d'être utilisé.</p></div>
+    <div class="scene reveal"><div class="tag">03 · 5 MIN PAR SEMAINE</div><h3>La lecture est courte.</h3><p>L'essentiel se lit en cinq minutes. Le reste, c'est votre exercice : trente minutes, une session, un résultat.</p></div>
+  </div>
+</section>
+
+<!-- TRIADE + COMPTEURS -->
+<section class="triade">
+  <div class="checks reveal"><span>✓ Vous lisez.</span><span>✓ Vous appliquez.</span><span>✓ Vous progressez.</span></div>
+  <h2 class="reveal">La théorie se lit. <em>La pratique se retient.</em></h2>
+  <div class="counters reveal">
+    <div class="counter"><div class="num" data-count="0">0</div><div class="lbl">Abonnés inscrits</div><div class="src">Chiffre réel, mis à jour chaque semaine.</div></div>
+    <div class="counter"><div class="num" data-count="1">0</div><div class="lbl">Technique par numéro</div></div>
+    <div class="counter"><div class="num" data-count="5" data-suffix=" min">0</div><div class="lbl">De lecture par semaine</div></div>
+    <div class="counter"><div class="num" data-count="0" data-prefix="€">0</div><div class="lbl">Toujours, pour la version gratuite</div></div>
+  </div>
+</section>
+
+<!-- APERÇU DES 3 PREMIERS NUMÉROS -->
+<section class="numeros" id="numeros">
+  <div class="kicker reveal">02 · LES NUMÉROS</div>
+  <h2 class="reveal">Trois premières semaines, <em>trois compétences.</em></h2>
+  <p class="intro reveal">Chaque numéro suit le même squelette : une leçon actionnable, un exemple réel, un exercice à faire le jour même, des ressources. Voici ce qui vous attend dès lundi.</p>
+  <div class="issues">
+    <a class="issue reveal" href="numeros/numero-1.md">
+      <span class="num">NUMÉRO 01 · SEMAINE 1</span>
+      <h3>Vos premiers agents IA en 30 minutes</h3>
+      <span class="meta">⏱️ 30 min · Débutant · 0 €</span>
+      <p>Ce qu'est vraiment un agent IA, trois outils gratuits pour débuter, et un mini-workflow réel monté pas à pas : un agent de veille qui vous envoie un résumé chaque lundi.</p>
+      <span class="go">LIRE LE NUMÉRO 01 →</span>
+    </a>
+    <a class="issue reveal" href="numeros/numero-2.md">
+      <span class="num">NUMÉRO 02 · SEMAINE 2</span>
+      <h3>Data science sans maths : commencez par l'analyse</h3>
+      <span class="meta">⏱️ 20 min · Débutant · 0 €</span>
+      <p>Pandas en vingt minutes, un vrai jeu de données, trois visualisations qui parlent d'elles-mêmes. Vous verrez vos premières données comme un analyste — sans aucune équation.</p>
+      <span class="go">LIRE LE NUMÉRO 02 →</span>
+    </a>
+    <a class="issue reveal" href="numeros/numero-3.md">
+      <span class="num">NUMÉRO 03 · SEMAINE 3</span>
+      <h3>Gagner de l'argent avec l'IA : les 5 pistes qui marchent en 2026</h3>
+      <span class="meta">⏱️ 20 min · Débutant · 0 €</span>
+      <p>Freelance, micro-outils, contenus, automatisations pour PME, audits IA : cinq pistes réelles, avec les tarifs honnêtes et la vérité sur le travail nécessaire.</p>
+      <span class="go">LIRE LE NUMÉRO 03 →</span>
+    </a>
+  </div>
+  <div class="quote reveal">
+    <blockquote>« Apprendre l'IA par les vidéos, c'est regarder quelqu'un nager. La newsletter, c'est l'eau jusqu'à la taille — et l'exercice, c'est la brasse. »</blockquote>
+    <div class="who">— LE PRINCIPE IA PRATIQUE</div>
+  </div>
+</section>
+
+<!-- POUR QUI -->
+<section class="pourqui" id="pourqui">
+  <div class="kicker reveal">03 · POUR QUI ?</div>
+  <h2 class="reveal">Si vous voulez appliquer, <em>c'est pour vous.</em></h2>
+  <div class="profiles">
+    <div class="profile reveal"><div class="ico">🎓</div><h3>Alternants</h3><p>Vous êtes en entreprise une semaine sur deux : une technique applicable tout de suite, c'est un point en plus dans vos missions et vos entretiens.</p></div>
+    <div class="profile reveal"><div class="ico">📚</div><h3>Étudiants</h3><p>Les cours vous donnent la théorie, pas le réflexe. Ici, vous accumulez des projets concrets à montrer — ça vaut plus qu'un bulletin.</p></div>
+    <div class="profile reveal"><div class="ico">💻</div><h3>Développeurs</h3><p>Vous codez déjà : ajoutez les agents, l'analyse de données et l'automatisation à votre boîte à outils, sans replonger dans les maths.</p></div>
+    <div class="profile reveal"><div class="ico">🚀</div><h3>Solopreneurs</h3><p>Pas d'équipe technique ? Chaque numéro vous donne un levier : automatiser une tâche, analyser vos chiffres, produire plus vite.</p></div>
+  </div>
+</section>
+
+<!-- INSCRIPTION -->
+<section class="inscription" id="inscription">
+  <div class="wrap">
+    <div>
+      <div class="kicker reveal">04 · INSCRIPTION</div>
+      <h2 class="reveal">Une minute maintenant. <em>Une compétence lundi.</em></h2>
+      <ul class="promos reveal">
+        <li>Le numéro 1 complet, dès lundi prochain</li>
+        <li>Un numéro par semaine, 5 minutes de lecture</li>
+        <li>Un exercice applicable le jour même</li>
+        <li>Désinscription en un clic, à tout moment</li>
+        <li>Vos données ne sont jamais revendues</li>
+      </ul>
+    </div>
+    <form id="insc">
+      <div class="field reveal"><label for="f-name">Nom et prénom</label><input id="f-name" name="name" required placeholder="Votre nom"></div>
+      <div class="field reveal"><label for="f-email">E-mail</label><input id="f-email" name="email" type="email" required placeholder="vous@exemple.fr"></div>
+      <div class="field reveal"><label for="f-metier">Votre métier / objectif</label>
+        <select id="f-metier" name="metier" required>
+          <option value="">Choisissez…</option>
+          <option>Alternant·e</option>
+          <option>Étudiant·e</option>
+          <option>Développeur·se</option>
+          <option>Solopreneur·e</option>
+          <option>Autre (précisez dans un email)</option>
+        </select>
+      </div>
+      <button class="btn reveal" type="submit" id="subBtn">Je m'abonne gratuitement →</button>
+      <p class="err reveal" id="err"></p>
+      <p class="note reveal" id="msg">Gratuit. Un email par semaine. Désinscription en un clic.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="kicker reveal">05 · FAQ</div>
+  <h2 class="reveal">Les questions <em>qu'on nous pose.</em></h2>
+  <div class="qa reveal">
+    <details open>
+      <summary>C'est vraiment gratuit ?</summary>
+      <p>Oui. La newsletter hebdomadaire est gratuite, sans carte bancaire, sans piège. Il existe une version Pro payante (9 €/mois) pour ceux qui veulent aller plus loin, mais le numéro de chaque semaine reste intégralement gratuit — toujours.</p>
+    </details>
+    <details>
+      <summary>Je suis débutant complet. C'est pour moi ?</summary>
+      <p>C'est exactement pour vous. La cible n° 1 d'IA Pratique, c'est la personne qui n'a jamais fait de machine learning et qui ne sait pas par où commencer. Chaque terme est défini avant d'être utilisé, et l'exercice est conçu pour une première fois réussie.</p>
+    </details>
+    <details>
+      <summary>Combien de temps faut-il vraiment par semaine ?</summary>
+      <p>Cinq minutes pour lire l'essentiel. Puis une session de vingt à trente minutes pour faire l'exercice, à votre rythme. Si vous n'avez que cinq minutes, vous apprenez quand même quelque chose : chaque numéro se tient seul.</p>
+    </details>
+    <details>
+      <summary>Quels outils faut-il avoir ?</summary>
+      <p>Un ordinateur et une connexion internet. Les trois premiers numéros utilisent uniquement des outils gratuits (comptes cloud, versions gratuites). Quand un outil payant existe, la version gratuite suffit pour l'exercice de la semaine.</p>
+    </details>
+    <details>
+      <summary>Ce n'est pas juste du « copier-coller de ChatGPT » ?</summary>
+      <p>Non — et c'est même le contraire. La plupart des contenus IA vous apprennent à faire des prompts. IA Pratique vous apprend à construire : agents, automatisations, analyses de données. Le modèle n'est qu'un outil ; la compétence, c'est vous.</p>
+    </details>
+    <details>
+      <summary>Pourquoi une version Pro à 9 €/mois ?</summary>
+      <p>Pour financer la newsletter et la garder gratuite. La version Pro ajoute deux techniques par mois, les fichiers et templates prêts à l'emploi, et une communauté. La version gratuite ne perd jamais rien de ce qu'elle promet.</p>
+    </details>
+  </div>
+</section>
+
+<footer>© 2026 IA PRATIQUE — Chaque semaine, une technique IA que vous appliquez le jour même · <a href="#inscription">S'abonner</a></footer>
+
+<!-- CHATBOT -->
+<button id="chatBtn" aria-label="Chatbot">💬</button>
+<div id="chatBox">
+  <div id="chatHead">💬 IA PRATIQUE — Une question ?</div>
+  <div id="chatMsgs">
+    <div class="bot">Bonjour ! Je réponds à vos questions sur la newsletter. Tapez votre question ou choisissez un sujet 👇</div>
+  </div>
+  <div id="chatQuick">
+    <button data-q="Prix">💸 C'est gratuit ?</button>
+    <button data-q="Débutant">🌱 Je débute</button>
+    <button data-q="Temps">⏱️ Le temps</button>
+    <button data-q="Numéros">📬 Les numéros</button>
+  </div>
+  <div id="chatInputRow">
+    <input id="chatInput" placeholder="Votre question...">
+    <button id="chatSend">➤</button>
+  </div>
+</div>
+
+<script>
+// ===== 1) FOND 3D WEBGL (couche EXCELLENCE ULTRA) =====
+(function(){
+  var c=document.getElementById('bg'),x=c.getContext('webgl');
+  if(!x)return;
+  function resize(){c.width=innerWidth;c.height=innerHeight;x.viewport(0,0,c.width,c.height)}
+  resize();addEventListener('resize',resize);
+  var vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+  var fs='precision mediump float;uniform vec2 r;uniform float t;void main(){vec2 uv=gl_FragCoord.xy/r;float v=0.;for(int i=0;i<3;i++){vec2 q=uv+vec2(float(i)*.37,-.21)+vec2(sin(t*.4+float(i)*2.1),cos(t*.3+float(i)))*.06;v+=.018/distance(uv,q);}gl_FragColor=vec4(vec3(.02,.06,.10)+v*vec3(0.0,.35,.55),1.);}';
+  function sh(t,s){var e=x.createShader(t);x.shaderSource(e,s);x.compileShader(e);return e}
+  var pr=x.createProgram();x.attachShader(pr,sh(x.VERTEX_SHADER,vs));x.attachShader(pr,sh(x.FRAGMENT_SHADER,fs));x.linkProgram(pr);x.useProgram(pr);
+  var b=x.createBuffer();x.bindBuffer(x.ARRAY_BUFFER,b);x.bufferData(x.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),x.STATIC_DRAW);
+  var loc=x.getAttribLocation(pr,'p');x.enableVertexAttribArray(loc);x.vertexAttribPointer(loc,2,x.FLOAT,false,0,0);
+  var ur=x.getUniformLocation(pr,'r'),ut=x.getUniformLocation(pr,'t'),t0=performance.now();
+  (function loop(){x.uniform2f(ur,c.width,c.height);x.uniform1f(ut,(performance.now()-t0)/1000);x.drawArrays(x.TRIANGLES,0,3);requestAnimationFrame(loop)})();
+})();
+
+// ===== 2) HERO FORGE INTERACTIF : LIRE → APPLIQUER → MAÎTRISER =====
+var steps=[["L'IA qui se retient,","c'est l'IA qu'on applique.","Chaque semaine, une technique IA que vous pouvez appliquer le jour même. Gratuit. Pour alternants, étudiants et débutants tech qui veulent des compétences, pas des slides."],
+  ["Une technique,","un seul jour.","Lundi : vous lisez. Mardi : vous appliquez. L'exercice de la semaine tient en une session de trente minutes, avec des outils gratuits."],
+  ["Au bout de dix semaines,","dix compétences.","Agents, données, automatisation, monétisation : chaque numéro s'empile sur le précédent. Vous ne regardez plus l'IA : vous la faites travailler."]];
+document.querySelectorAll('.forge button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.forge button').forEach(function(o){o.classList.remove('active')});
+    b.classList.add('active');
+    var s=steps[b.dataset.step];
+    document.getElementById('heroTitle').innerHTML=s[0]+'<br><em style="color:var(--electric)">'+s[1]+'</em>';
+    document.getElementById('heroSub').textContent=s[2];
+  });
+});
+
+// ===== 3) RÉVÉLATIONS AU SCROLL =====
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+// ===== 4) COMPTEURS ANIMÉS =====
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return;cio.unobserve(e.target);
+  var el=e.target,target=+el.dataset.count,suf=el.dataset.suffix||'',pre=el.dataset.prefix||'',t0=performance.now();
+  (function tick(){var k=Math.min(1,(performance.now()-t0)/1200);el.textContent=pre+Math.round(target*(1-Math.pow(1-k,3)))+suf;if(k<1)requestAnimationFrame(tick)})();
+})},{threshold:.4});
+document.querySelectorAll('.num[data-count]').forEach(function(el){cio.observe(el)});
+
+// ===== 5) CHATBOT =====
+(function(){
+  var btn=document.getElementById('chatBtn'),box=document.getElementById('chatBox'),
+      msgs=document.getElementById('chatMsgs'),inp=document.getElementById('chatInput');
+  function bot(t){var d=document.createElement('div');d.className='bot';d.textContent=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
+  function me(t){var d=document.createElement('div');d.className='me';d.textContent=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight}
+  var answers={prix:'Gratuit, sans carte bancaire. Le numéro de chaque semaine est offert. Une version Pro existe à 9 €/mois pour aller plus loin, mais elle n\'enlève rien à la version gratuite.',debutant:'C\'est exactement pour vous : chaque terme est défini avant d\'être utilisé, et l\'exercice est conçu pour une première fois réussie. Il vous faut un ordinateur et une connexion internet, rien de plus.',temps:'Cinq minutes de lecture, puis vingt à trente minutes d\'exercice une fois par semaine. Même en ne lisant que l\'essentiel, vous apprenez quelque chose : chaque numéro se tient seul.',numeros:'Les trois premiers numéros : vos premiers agents IA (semaine 1), l\'analyse de données avec pandas (semaine 2), et les 5 pistes pour gagner de l\'argent avec l\'IA (semaine 3). Tous disponibles sur cette page.',defaut:'Bonne question ! Laissez votre email dans le formulaire ci-dessus : nous vous répondons personnellement sous 24 h.'};
+  function rep(q){
+    var t=q.toLowerCase();me(q);
+    if(t.indexOf('prix')>-1||t.indexOf('gratuit')>-1||t.indexOf('€')>-1)bot(answers.prix);
+    else if(t.indexOf('débutant')>-1||t.indexOf('debutant')>-1||t.indexOf('commence')>-1||t.indexOf('niveau')>-1)bot(answers.debutant);
+    else if(t.indexOf('temps')>-1||t.indexOf('minute')>-1||t.indexOf('durée')>-1||t.indexOf('duree')>-1)bot(answers.temps);
+    else if(t.indexOf('numéro')>-1||t.indexOf('numero')>-1||t.indexOf('sujet')>-1||t.indexOf('contenu')>-1)bot(answers.numeros);
+    else bot(answers.defaut);
+  }
+  btn.addEventListener('click',function(){box.classList.toggle('open')});
+  document.querySelectorAll('#chatQuick button').forEach(function(b){b.addEventListener('click',function(){rep(b.dataset.q)})});
+  document.getElementById('chatSend').addEventListener('click',function(){if(inp.value.trim())rep(inp.value);inp.value=''});
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'&&inp.value.trim()){rep(inp.value);inp.value=''}});
+})();
+
+// ===== 6) INSCRIPTION EMAILJS RÉEL (service_cy1ytdb / template_xpo58cv) =====
+(function(){
+  var form=document.getElementById('insc'),msg=document.getElementById('msg');
+  var cfg={serviceId:'service_cy1ytdb',templateId:'template_xpo58cv',publicKey:'8Pui4ZEqxW2jRVF7h'};
+  function chargerEmailJS(cb){
+    if(window.emailjs){cb();return;}
+    var s=document.createElement('script');
+    s.src='https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+    s.onload=function(){emailjs.init(cfg.publicKey);cb();};
+    s.onerror=function(){msg.textContent='⚠️ Impossible de charger le service d\'envoi. Écrivez-nous directement : bonjour@iapratique.fr';};
+    document.body.appendChild(s);
+  }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=form.name.value.trim(),email=form.email.value.trim(),metier=form.metier.value;
+    var err=document.getElementById('err');
+    if(!name){msg.textContent='';err.textContent='Indiquez votre nom.';return;}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){msg.textContent='';err.textContent='Adresse e-mail invalide.';return;}
+    if(!metier){msg.textContent='';err.textContent='Choisissez votre profil.';return;}
+    err.textContent='';
+    var btn=form.querySelector('button');btn.disabled=true;btn.textContent='Inscription en cours…';
+    chargerEmailJS(function(){
+      emailjs.send(cfg.serviceId,cfg.templateId,{site:'IA Pratique',name:name,email:email,question:'Inscription newsletter IA Pratique — métier/objectif : '+metier}).then(function(){
+        msg.textContent='✅ Bienvenue ! Vérifiez votre boîte mail : le numéro 1 arrive lundi prochain.';
+        form.reset();
+      }).catch(function(er){
+        msg.textContent='⚠️ Erreur d\'envoi : '+(er&&er.text?er.text:'réessayez')+' — écrivez-nous directement : bonjour@iapratique.fr';
+      }).finally(function(){btn.disabled=false;btn.textContent='Je m\'abonne gratuitement →';});
+    });
+  });
+})();
+</script>
+</body>
+</html>
