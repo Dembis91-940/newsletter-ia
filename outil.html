@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quelle compétence IA démarrer en premier ? — Test gratuit · IA PRATIQUE</title>
+<meta name="description" content="3 questions, 30 secondes : découvrez quelle compétence IA vous apportera le plus vite un résultat concret, et par quel numéro commencer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --abyss:#041019; --paper:#f8f7f3; --ink:#111313; --muted:#8b9397;
+    --frost:#eef7f8; --electric:#064BD9; --electric-2:#1d6ff2; --cyan:#22d3ee;
+    --grad-cta:linear-gradient(135deg,#064BD9 0%,#1d6ff2 100%);
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --sans:Inter,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--abyss);color:var(--frost);font-family:var(--sans);line-height:1.6;min-height:100vh;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(700px 460px at 15% -5%,rgba(6,75,217,.25),transparent 60%),radial-gradient(600px 420px at 95% 15%,rgba(34,211,238,.10),transparent 60%),var(--abyss)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px}
+  header{display:flex;align-items:center;gap:14px;padding:26px 0;border-bottom:1px solid rgba(238,247,248,.12)}
+  .logo{font-weight:800;letter-spacing:.5px}
+  .logo i{color:var(--electric-2);font-style:normal}
+  .logo span{display:block;font-size:10.5px;font-weight:500;letter-spacing:2.4px;color:var(--muted)}
+  header a{margin-left:auto;color:var(--frost);text-decoration:none;font-size:14px;font-weight:600}
+  header a:hover{color:var(--cyan)}
+  .kicker{margin-top:56px;font-size:12px;font-weight:700;letter-spacing:2.6px;text-transform:uppercase;color:var(--cyan)}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4vw,44px);line-height:1.15;margin:14px 0 12px;letter-spacing:-.5px}
+  h1 em{font-style:italic;color:var(--electric-2)}
+  .intro{color:var(--muted);font-size:17px;max-width:620px}
+  .intro strong{color:var(--frost)}
+  .card{background:rgba(10,24,35,.75);border:1px solid rgba(238,247,248,.14);border-radius:18px;padding:34px 36px;margin-top:36px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+  .q{display:none}
+  .q.active{display:block;animation:apparaitre .3s ease}
+  @keyframes apparaitre{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .q-num{font-size:12px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--cyan)}
+  .q h2{font-family:var(--serif);font-weight:600;font-size:24px;margin:10px 0 22px;line-height:1.3}
+  .opt{display:flex;gap:14px;align-items:flex-start;width:100%;text-align:left;background:rgba(238,247,248,.05);border:1.5px solid rgba(238,247,248,.14);border-radius:12px;padding:16px 18px;margin-bottom:12px;cursor:pointer;color:var(--frost);font-family:var(--sans);font-size:15.5px;transition:all .18s}
+  .opt:hover{border-color:var(--cyan);background:rgba(34,211,238,.08)}
+  .opt.sel{border-color:var(--electric-2);background:rgba(6,75,217,.16)}
+  .opt .ico{font-size:20px;line-height:1.3}
+  .opt b{display:block;font-weight:700}
+  .opt span{color:var(--muted);font-size:14px}
+  .nav{display:flex;justify-content:space-between;align-items:center;margin-top:26px}
+  .back{background:none;border:none;color:var(--muted);font-size:14px;cursor:pointer;font-family:var(--sans)}
+  .back:hover{color:var(--frost)}
+  .btn{display:inline-block;background:var(--grad-cta);color:#fff;text-decoration:none;font-weight:700;padding:13px 30px;border-radius:8px;font-size:15px;border:none;cursor:pointer;transition:transform .2s,filter .2s;box-shadow:0 8px 24px rgba(6,75,217,.4)}
+  .btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .resultat{display:none;margin-top:36px}
+  .resultat.visible{display:block;animation:apparaitre .35s ease}
+  .res-head{display:flex;align-items:center;gap:16px}
+  .res-ico{font-size:40px}
+  .res-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3vw,32px);line-height:1.2}
+  .res-head h2 em{font-style:italic;color:var(--cyan)}
+  .res-body{margin-top:18px;background:rgba(10,24,35,.75);border:1px solid rgba(238,247,248,.14);border-radius:18px;padding:28px 30px}
+  .res-body h3{font-size:14px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px}
+  .res-body p{color:var(--frost);font-size:16px}
+  .res-body p strong{color:var(--electric-2)}
+  .res-note{margin-top:14px;padding-top:14px;border-top:1px solid rgba(238,247,248,.1);color:var(--muted);font-size:14px}
+  .cta{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn-ghost{background:transparent;border:1px solid rgba(238,247,248,.35);color:var(--frost);box-shadow:none}
+  .btn-ghost:hover{filter:none;border-color:var(--cyan);color:var(--cyan)}
+  .relancer{margin-top:22px;text-align:center}
+  .relancer button{background:none;border:none;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:14px;font-family:var(--sans)}
+  .relancer button:hover{color:var(--frost)}
+  footer{margin-top:70px;padding:26px 0 40px;border-top:1px solid rgba(238,247,248,.1);color:var(--muted);font-size:13.5px;text-align:center}
+  footer a{color:var(--cyan);text-decoration:none}
+  @media(max-width:560px){.card{padding:26px 20px}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">IA<i>·</i>PRATIQUE<span>APPLIQUER, PAS THÉORISER</span></div>
+    <a href="index.html">← Retour à l'accueil</a>
+  </header>
+
+  <div class="kicker">Test gratuit · 30 secondes · Zéro email requis</div>
+  <h1>Quelle compétence IA <em>démarrer en premier ?</em></h1>
+  <p class="intro">Agents, données, automatisation, monétisation : la newsletter en propose une par semaine. Ce test vous dit <strong>laquelle vous rapportera le plus vite</strong> — et par quel numéro commencer.</p>
+
+  <div class="card">
+    <div class="q active" data-q="0">
+      <div class="q-num">Question 1 / 3</div>
+      <h2>Votre situation aujourd'hui&nbsp;?</h2>
+      <button class="opt" data-opt="alt"><span class="ico">🎓</span><span><b>Alternant ou étudiant</b><span>Peu de temps, envie de montrer des projets concrets.</span></span></button>
+      <button class="opt" data-opt="poste"><span class="ico">💼</span><span><b>En poste</b><span>Vous voulez automatiser vos tâches répétitives.</span></span></button>
+      <button class="opt" data-opt="solo"><span class="ico">🚀</span><span><b>Solopreneur / freelance</b><span>Vous cherchez des leviers qui font rentrer de l'argent.</span></span></button>
+    </div>
+    <div class="q" data-q="1">
+      <div class="q-num">Question 2 / 3</div>
+      <h2>Ce qui vous bloque le plus&nbsp;?</h2>
+      <button class="opt" data-opt="temps"><span class="ico">⏰</span><span><b>Le manque de temps</b><span>Les journées partent en tâches répétitives.</span></span></button>
+      <button class="opt" data-opt="theorie"><span class="ico">📚</span><span><b>Trop de théorie, pas assez de pratique</b><span>Vous lisez beaucoup, vous appliquez peu.</span></span></button>
+      <button class="opt" data-opt="depart"><span class="ico">🧭</span><span><b>Je ne sais pas par où commencer</b><span>L'IA est partout, rien n'est concret.</span></span></button>
+    </div>
+    <div class="q" data-q="2">
+      <div class="q-num">Question 3 / 3</div>
+      <h2>Votre objectif dans 10 semaines&nbsp;?</h2>
+      <button class="opt" data-opt="gain"><span class="ico">⚡</span><span><b>Gagner du temps</b><span>Une heure de moins par jour sur le répétitif.</span></span></button>
+      <button class="opt" data-opt="argent"><span class="ico">💰</span><span><b>Gagner de l'argent</b><span>Une nouvelle source de revenus avec l'IA.</span></span></button>
+      <button class="opt" data-opt="competences"><span class="ico">🛠️</span><span><b>Monter en compétences</b><span>Devenir celui ou celle qui sait faire.</span></span></button>
+    </div>
+    <div class="nav">
+      <button class="back" id="back" style="visibility:hidden">← Précédent</button>
+      <button class="btn" id="next" disabled>Continuer →</button>
+    </div>
+  </div>
+
+  <div class="resultat" id="resultat">
+    <div class="res-head">
+      <span class="res-ico" id="res-ico">🤖</span>
+      <h2 id="res-titre"></h2>
+    </div>
+    <div class="res-body">
+      <h3>Votre premier pas concret</h3>
+      <p id="res-texte"></p>
+      <p class="res-note" id="res-note"></p>
+    </div>
+    <div class="cta">
+      <a class="btn" href="index.html#inscription">Recevoir le numéro recommandé — gratuit →</a>
+      <a class="btn btn-ghost" href="index.html#numeros">Voir les 3 premiers numéros</a>
+    </div>
+    <div class="relancer"><button id="relancer">↺ Refaire le test</button></div>
+  </div>
+
+  <footer>IA PRATIQUE — une technique par semaine, applicable le jour même. <a href="index.html">Retour à l'accueil</a></footer>
+</div>
+
+<script>
+(function(){
+  var reponses = {};
+  var qCourante = 0;
+  var questions = document.querySelectorAll('.q');
+  var next = document.getElementById('next');
+  var back = document.getElementById('back');
+
+  document.querySelectorAll('.opt').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var q = btn.closest('.q');
+      q.querySelectorAll('.opt').forEach(function(o){o.classList.remove('sel')});
+      btn.classList.add('sel');
+      reponses[q.dataset.q] = btn.dataset.opt;
+      next.disabled = false;
+    });
+  });
+
+  function afficher(i){
+    questions.forEach(function(q, idx){ q.classList.toggle('active', idx === i); });
+    qCourante = i;
+    next.disabled = !reponses[i];
+    next.textContent = i === 2 ? 'Voir mon résultat →' : 'Continuer →';
+    back.style.visibility = i === 0 ? 'hidden' : 'visible';
+  }
+
+  next.addEventListener('click', function(){
+    if(qCourante < 2){ afficher(qCourante + 1); }
+    else { afficherResultat(); }
+  });
+  back.addEventListener('click', function(){ if(qCourante > 0) afficher(qCourante - 1); });
+  document.getElementById('relancer').addEventListener('click', function(){
+    reponses = {}; qCourante = 0;
+    document.querySelectorAll('.opt').forEach(function(o){o.classList.remove('sel')});
+    document.getElementById('resultat').classList.remove('visible');
+    document.querySelector('.card').style.display = '';
+    afficher(0);
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  var profils = {
+    agents: {
+      ico:'🤖', titre:'Votre profil : <em>Pilote d\'agents</em>',
+      texte:'Commencez par le <strong>Numéro 01 — « Vos premiers agents IA en 30 minutes »</strong> : ce qu\'est vraiment un agent, trois outils gratuits, et un mini-workflow réel monté pas à pas — un agent de veille qui vous envoie un résumé chaque lundi.',
+      note:'Pourquoi maintenant : c\'est la compétence qui s\'empile le mieux — une fois l\'agent monté, vous l\'automatisez, puis vous le monétisez.'
+    },
+    donnees: {
+      ico:'📊', titre:'Votre profil : <em>Analyste sans les maths</em>',
+      texte:'Commencez par le <strong>Numéro 02 — « Data science sans maths : commencez par l\'analyse »</strong> : Pandas en vingt minutes, un vrai jeu de données, trois visualisations qui parlent d\'elles-mêmes.',
+      note:'Pourquoi maintenant : c\'est la base la plus demandée en entreprise — et la plus rapide à transformer en projet à montrer.'
+    },
+    automatisation: {
+      ico:'⚙️', titre:'Votre profil : <em>Automatiseur</em>',
+      texte:'Commencez par le <strong>Numéro 01 — « Vos premiers agents IA en 30 minutes »</strong> puis enchaînez sur l\'automatisation : une fois le réflexe agent en place, chaque tâche répétitive de votre journée devient un workflow qui tourne seul.',
+      note:'Pourquoi maintenant : l\'automatisation est votre levier de temps n°1 — et elle se construit sur les agents.'
+    },
+    monetisation: {
+      ico:'💰', titre:'Votre profil : <em>Monétiseur</em>',
+      texte:'Commencez par le <strong>Numéro 03 — « Gagner de l\'argent avec l\'IA : les 5 pistes qui marchent en 2026 »</strong> : freelance, micro-outils, contenus, automatisations pour PME, audits IA — avec les tarifs honnêtes et la vérité sur le travail nécessaire.',
+      note:'Pourquoi maintenant : vous visez un revenu concret — autant commencer par la piste qui colle à votre situation.'
+    }
+  };
+
+  function afficherResultat(){
+    var scores = {agents:0, donnees:0, automatisation:0, monetisation:0};
+    var map = {
+      alt:{agents:1, donnees:1},
+      poste:{automatisation:2, agents:1},
+      solo:{monetisation:2, automatisation:1},
+      temps:{automatisation:2},
+      theorie:{agents:1, donnees:1},
+      depart:{donnees:1, agents:1},
+      gain:{automatisation:2},
+      argent:{monetisation:2},
+      competences:{agents:1, donnees:1}
+    };
+    Object.keys(reponses).forEach(function(k){
+      var pts = map[reponses[k]] || {};
+      Object.keys(pts).forEach(function(c){ scores[c] += pts[c]; });
+    });
+    var cle = Object.keys(scores).reduce(function(a,b){ return scores[b] > scores[a] ? b : a; });
+    var p = profils[cle];
+    document.getElementById('res-ico').textContent = p.ico;
+    document.getElementById('res-titre').innerHTML = p.titre;
+    document.getElementById('res-texte').innerHTML = p.texte;
+    document.getElementById('res-note').textContent = p.note;
+    document.querySelector('.card').style.display = 'none';
+    document.getElementById('resultat').classList.add('visible');
+    window.scrollTo({top: document.getElementById('resultat').offsetTop - 40, behavior:'smooth'});
+  }
+})();
+</script>
+</body>
+</html>

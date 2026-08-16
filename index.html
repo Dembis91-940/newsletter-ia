@@ -12,7 +12,9 @@
 <style>
 :root{
   --abyss:#041019; --paper:#f8f7f3; --ink:#111313; --muted:#707575;
-  --frost:#eef7f8; --electric:#064BD9; --line:rgba(17,19,19,.14);
+  --frost:#eef7f8; --electric:#064BD9; --electric-2:#1d6ff2; --cyan:#22d3ee;
+  --line:rgba(17,19,19,.14);
+  --grad-cta:linear-gradient(135deg,#064BD9 0%,#1d6ff2 100%);
   --serif:"Fraunces",Georgia,"Times New Roman",serif;
   --sans:Inter,"Helvetica Neue",Arial,sans-serif;
 }
@@ -27,8 +29,9 @@ h2{font-size:clamp(1.9rem,4vw,3.3rem);font-weight:800;line-height:1.08;letter-sp
 h2 em{font-style:normal;color:var(--electric)}
 p{color:var(--muted)}
 .serif{font-family:var(--serif);font-weight:600;letter-spacing:0}
-.btn{display:inline-block;background:var(--electric);color:#fff;text-decoration:none;font-weight:700;
-  padding:.95rem 1.7rem;border-radius:8px;font-size:.95rem;border:none;cursor:pointer;transition:transform .2s,filter .2s;position:relative;overflow:hidden}
+.btn{display:inline-block;background:var(--grad-cta);color:#fff;text-decoration:none;font-weight:700;
+  padding:.95rem 1.7rem;border-radius:8px;font-size:.95rem;border:none;cursor:pointer;transition:transform .2s,filter .2s;position:relative;overflow:hidden;
+  box-shadow:0 8px 24px rgba(6,75,217,.35)}
 .btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
 .btn-ghost{background:transparent;color:var(--frost);border:1px solid rgba(238,247,248,.35)}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
@@ -163,9 +166,10 @@ footer a{color:var(--frost);text-decoration:none}
     <button data-step="2">02 · MAÎTRISER</button>
   </div>
   <h1 id="heroTitle">L'IA qui se retient,<br><em style="color:var(--electric)">c'est l'IA qu'on applique.</em></h1>
-  <p id="heroSub" style="max-width:600px">Chaque semaine, une technique IA que vous pouvez appliquer le jour même. Gratuit. Pour alternants, étudiants et débutants tech qui veulent des compétences, pas des slides.</p>
+  <p id="heroSub" style="max-width:600px">Une technique IA par semaine, applicable le jour même, avec des outils gratuits. Pour alternants, étudiants et débutants tech qui veulent des compétences — pas des slides.</p>
   <div class="row">
     <a class="btn" href="#inscription">Recevoir le numéro 1 gratuitement →</a>
+    <a class="btn btn-ghost" href="outil.html">Tester mon profil IA →</a>
   </div>
   <p class="promise">Prochain numéro : <strong>« Vos premiers agents IA en 30 minutes »</strong> — lundi prochain, dans votre boîte mail.</p>
 </section>
@@ -175,9 +179,9 @@ footer a{color:var(--frost);text-decoration:none}
   <div class="kicker reveal">01 · LE CONTRAT</div>
   <h2 class="reveal">Trois promesses, <em>tenues chaque semaine.</em></h2>
   <div class="scenes">
-    <div class="scene reveal"><div class="tag">01 · ACTIONNABLE</div><h3>Une technique, un jour.</h3><p>Pas un cours de six heures : une seule technique, expliquée puis appliquée sur un cas réel, du début à la fin.</p></div>
-    <div class="scene reveal"><div class="tag">02 · ZÉRO JARGON</div><h3>Expliqué comme à un collègue.</h3><p>Chaque terme est défini en français simple. Si un mot compliqué apparaît, il est traduit avant d'être utilisé.</p></div>
-    <div class="scene reveal"><div class="tag">03 · 5 MIN PAR SEMAINE</div><h3>La lecture est courte.</h3><p>L'essentiel se lit en cinq minutes. Le reste, c'est votre exercice : trente minutes, une session, un résultat.</p></div>
+    <div class="scene reveal"><div class="tag">01 · ACTIONNABLE</div><h3>Une technique, un jour.</h3><p>Pas un cours de six heures : une technique unique, expliquée puis appliquée sur un cas réel, du début à la fin. Lundi vous lisez, mardi vous l'utilisez.</p></div>
+    <div class="scene reveal"><div class="tag">02 · ZÉRO JARGON</div><h3>Expliqué comme à un collègue.</h3><p>Chaque terme est défini en français simple. Si un mot compliqué apparaît, il est traduit avant d'être utilisé — vous gagnez du temps, pas des définitions à déchiffrer.</p></div>
+    <div class="scene reveal"><div class="tag">03 · 5 MIN PAR SEMAINE</div><h3>5 minutes de lecture, un résultat.</h3><p>L'essentiel se lit en cinq minutes. L'exercice tient en une session de trente minutes, avec des outils gratuits. Un rendez-vous court, un résultat concret chaque semaine.</p></div>
   </div>
 </section>
 
@@ -344,7 +348,7 @@ footer a{color:var(--frost);text-decoration:none}
 })();
 
 // ===== 2) HERO FORGE INTERACTIF : LIRE → APPLIQUER → MAÎTRISER =====
-var steps=[["L'IA qui se retient,","c'est l'IA qu'on applique.","Chaque semaine, une technique IA que vous pouvez appliquer le jour même. Gratuit. Pour alternants, étudiants et débutants tech qui veulent des compétences, pas des slides."],
+var steps=[["L'IA qui se retient,","c'est l'IA qu'on applique.","Une technique IA par semaine, applicable le jour même, avec des outils gratuits. Pour alternants, étudiants et débutants tech qui veulent des compétences — pas des slides."],
   ["Une technique,","un seul jour.","Lundi : vous lisez. Mardi : vous appliquez. L'exercice de la semaine tient en une session de trente minutes, avec des outils gratuits."],
   ["Au bout de dix semaines,","dix compétences.","Agents, données, automatisation, monétisation : chaque numéro s'empile sur le précédent. Vous ne regardez plus l'IA : vous la faites travailler."]];
 document.querySelectorAll('.forge button').forEach(function(b){
