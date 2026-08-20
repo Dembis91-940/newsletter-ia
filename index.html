@@ -285,11 +285,16 @@ input:focus, select:focus, textarea:focus, .champ:focus {
 }
 /* ---------- Extra par site ---------- */
 
-   .kicker { color:var(--a1); letter-spacing:.18em; }
-   em { color:var(--a1); }
-   .btn { background:linear-gradient(135deg,var(--a1),var(--a2)) !important; color:#F6F2E9 !important; }
+   .kicker { color:var(--fv-a1); letter-spacing:.18em; }
+   em { color:var(--fv-a1); }
+   .btn { background:linear-gradient(135deg,#C81E44,#A01337) !important; color:#F6F2E9 !important; }
    .issue:hover { border-color:rgba(225,29,72,.4); }
    #bg { opacity:.28; }
+   /* Correctifs contraste AA (audit 2026-08-20) */
+   .logo strong { color:var(--fv-text) !important; }
+   .logo strong i { color:var(--fv-a1) !important; }
+   .triade .checks span, .counter .num { color:#F43F5E !important; }
+   .counter .lbl, .counter .src { color:#A8A08E !important; }
    
 /* ---------- Mobile ---------- */
 @media (max-width:760px) {
@@ -301,6 +306,7 @@ input:focus, select:focus, textarea:focus, .champ:focus {
 }
 
 </style>
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 <div class="futur-bg" aria-hidden="true"></div>
