@@ -3,13 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IA Pratique — Chaque semaine, une technique IA à appliquer le jour même</title>
 <meta name="description" content="IA Pratique : la newsletter hebdomadaire gratuite pour alternants, étudiants et débutants tech. Chaque semaine, une technique IA que vous pouvez appliquer le jour même. Zéro jargon, 5 minutes par semaine.">
 <meta property="og:title" content="IA Pratique — L'IA qui se retient, c'est l'IA qu'on applique">
 <meta property="og:description" content="Chaque semaine, une technique IA que vous pouvez appliquer le jour même. Gratuit. Pour alternants, étudiants et débutants tech.">
 <meta property="og:type" content="website">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Newsletter","name":"IA Pratique","description":"Chaque semaine, une technique IA que vous pouvez appliquer le jour même. Gratuit.","inLanguage":"fr","publisher":{"@type":"Organization","name":"IA Pratique"}}</script>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+
 :root{
   --abyss:#041019; --paper:#f8f7f3; --ink:#111313; --muted:#707575;
   --frost:#eef7f8; --electric:#064BD9; --electric-2:#1d6ff2; --cyan:#22d3ee;
@@ -142,9 +149,162 @@ footer a{color:var(--frost);text-decoration:none}
 #chatSend{background:var(--electric);color:#fff;border:none;padding:0 1.1rem;font-size:1rem;cursor:pointer}
 @media(max-width:880px){.inscription .wrap{grid-template-columns:1fr}}
 @media(max-width:700px){nav{display:none}}
+
+:root {
+--abyss:#16130F; --paper:#F6F2E9; --ink:#16130F; --muted:#6E6557;
+  --frost:#F1EAE0; --electric:#E11D48; --electric-2:#BE123C; --cyan:#C9A227;
+  --line:rgba(22,19,15,.14);
+  --grad-cta:linear-gradient(135deg,#E11D48 0%,#BE123C 100%);
+  --serif:"Fraunces",Georgia,"Times New Roman",serif; --sans:Inter,"Helvetica Neue",Arial,sans-serif;
+}
+
+/* ============ FUTUR V3 — newsletter-ia ============ */
+:root {
+  --fv-a1:#E11D48; --fv-a2:#BE123C; --fv-a3:#C9A227; --fv-al:#BE123C;
+  --fv-bg:#F6F2E9; --fv-bg2:#EDE6D8; --fv-text:#16130F; --fv-muted:#6E6557;
+  --fv-tf:'Fraunces',serif; --fv-bf:'Inter',sans-serif;
+}
+html { scroll-behavior:smooth; }
+body {
+  font-family:var(--fv-bf), system-ui, sans-serif !important;
+  background:#F6F2E9 !important;
+  color:#16130F !important;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.title,.sec-title,.kicker,.logo,.brand {
+  font-family:var(--fv-tf), serif !important;
+  letter-spacing:-.01em;
+}
+::selection { background:rgba(225, 29, 72,.4); }
+/* ---------- Fond futuriste ---------- */
+.futur-bg {
+  position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;
+  background:
+    radial-gradient(58% 44% at 16% 10%, rgba(225, 29, 72,.17), transparent 62%),
+    radial-gradient(50% 40% at 88% 22%, rgba(201, 162, 39,.13), transparent 60%),
+    radial-gradient(54% 46% at 60% 94%, rgba(190, 18, 60,.15), transparent 64%),
+    var(--fv-bg);
+}
+.futur-bg::before {
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(225, 29, 72,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(225, 29, 72,.06) 1px, transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(ellipse 92% 72% at 50% 0%, #000 32%, transparent 100%);
+          mask-image:radial-gradient(ellipse 92% 72% at 50% 0%, #000 32%, transparent 100%);
+}
+.futur-bg::after {
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(34% 26% at 80% 16%, rgba(225, 29, 72,.12), transparent 70%);
+  animation:fvPulse 9s ease-in-out infinite;
+}
+@keyframes fvPulse {
+  0%,100% { opacity:.5; transform:scale(1); }
+  50% { opacity:1; transform:scale(1.1); }
+}
+/* ---------- Glassmorphism ---------- */
+.issue, .promise, .profile, .qa, .quote, .scene, .forge {
+  background:linear-gradient(160deg, rgba(225, 29, 72,.10), rgba(190, 18, 60,.05)) !important;
+  backdrop-filter:blur(18px) saturate(150%);
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
+  border:1px solid rgba(225, 29, 72,.28) !important;
+  border-radius:22px !important;
+  box-shadow:0 24px 60px -30px rgba(0,0,0,.75), 0 0 0 1px rgba(225, 29, 72,.06), 0 0 46px -14px rgba(225, 29, 72,.30);
+  transition:transform .32s ease, box-shadow .32s ease, border-color .32s ease;
+}
+.issue, .promise, .profile, .qa, .quote, .scene, .forge:hover {
+  transform:translateY(-6px);
+  box-shadow:0 32px 72px -30px rgba(0,0,0,.8), 0 0 0 1px rgba(225, 29, 72,.13), 0 0 66px -10px rgba(225, 29, 72,.45);
+}
+/* ---------- Navigation ---------- */
+nav, .nav, .main-nav {
+  background:rgba(237, 230, 216,.78) !important;
+  backdrop-filter:blur(16px) saturate(170%);
+  -webkit-backdrop-filter:blur(16px) saturate(170%);
+  border-bottom:1px solid rgba(225, 29, 72,.2);
+}
+nav a, .nav a, .main-nav a { color:var(--fv-muted) !important; transition:color .25s, text-shadow .25s; }
+nav a:hover, .nav a:hover, .main-nav a:hover {
+  color:var(--fv-al) !important;
+  text-shadow:0 0 16px rgba(225, 29, 72,.9);
+}
+.logo, .brand { color:var(--fv-text) !important; }
+/* ---------- Boutons ---------- */
+.btn, .btn-primary, .bouton-principal, .cta-en-tete {
+  background:linear-gradient(135deg, #E11D48, #BE123C) !important;
+  border:none !important;
+  box-shadow:0 10px 32px -10px rgba(225, 29, 72,.7), 0 0 0 1px rgba(225, 29, 72,.25) !important;
+  transition:transform .25s, box-shadow .25s !important;
+  color:#16130F !important;
+}
+.btn:hover, .btn-primary:hover, .bouton-principal:hover {
+  transform:translateY(-3px) scale(1.02);
+  box-shadow:0 16px 46px -10px rgba(225, 29, 72,.9), 0 0 24px rgba(225, 29, 72,.35) !important;
+}
+.btn-ghost, .btn-secondary, .bouton-contour {
+  background:rgba(225, 29, 72,.09) !important;
+  border:1px solid rgba(225, 29, 72,.42) !important;
+  color:var(--fv-text) !important;
+  backdrop-filter:blur(8px);
+  transition:transform .25s, background .25s, box-shadow .25s;
+}
+.btn-ghost:hover, .btn-secondary:hover, .bouton-contour:hover {
+  background:rgba(225, 29, 72,.18) !important;
+  box-shadow:0 0 34px -6px rgba(225, 29, 72,.6);
+  transform:translateY(-3px);
+}
+/* ---------- Badges / tags ---------- */
+.badge, .tag, .kicker, .etiquette, .sec-tag, .sur-titre, .num {
+  font-family:var(--fv-tf), serif !important;
+  letter-spacing:.14em; text-transform:uppercase;
+  color:#BE123C !important;
+}
+/* ---------- Champs ---------- */
+input, select, textarea, .champ, .field input, .field select, .form-box input {
+  background:rgba(225, 29, 72,.07) !important;
+  border:1px solid rgba(225, 29, 72,.28) !important;
+  color:var(--fv-text) !important;
+  border-radius:12px !important;
+  transition:border-color .25s, box-shadow .25s;
+}
+input:focus, select:focus, textarea:focus, .champ:focus {
+  border-color:rgba(225, 29, 72,.7) !important;
+  box-shadow:0 0 0 3px rgba(225, 29, 72,.16) !important;
+  outline:none;
+}
+/* ---------- Prix ---------- */
+.prix, .price, .montant { color:#BE123C !important; }
+/* ---------- Réveil ---------- */
+.reveal { opacity:0; transform:translateY(30px); transition:opacity .8s ease, transform .8s ease; }
+.reveal.visible, .reveal.in { opacity:1; transform:none; }
+/* ---------- Titres glow ---------- */
+.title, .sec-title, h1, h2, .hero-title {
+  text-shadow:0 0 46px rgba(225, 29, 72,.28);
+}
+/* ---------- Extra par site ---------- */
+
+   .kicker { color:var(--a1); letter-spacing:.18em; }
+   em { color:var(--a1); }
+   .btn { background:linear-gradient(135deg,var(--a1),var(--a2)) !important; color:#F6F2E9 !important; }
+   .issue:hover { border-color:rgba(225,29,72,.4); }
+   #bg { opacity:.28; }
+   
+/* ---------- Mobile ---------- */
+@media (max-width:760px) {
+  .futur-bg::before { background-size:32px 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation:none !important; transition:none !important; }
+  .reveal { opacity:1; transform:none; }
+}
+
 </style>
 </head>
 <body>
+<div class="futur-bg" aria-hidden="true"></div>
+
 
 <canvas id="bg"></canvas>
 
@@ -329,6 +489,49 @@ footer a{color:var(--frost);text-decoration:none}
     <button id="chatSend">➤</button>
   </div>
 </div>
+
+
+
+
+<script>
+/* FUTUR V3 — compteurs animés */
+(function(){
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var sels = [".stat b", ".k-val", ".mini-stat b", "[data-count]"];
+  var els = [];
+  sels.forEach(function(s){ document.querySelectorAll(s).forEach(function(el){ els.push(el); }); });
+  if (!els.length || !("IntersectionObserver" in window)) return;
+  function parse(el){
+    var t = el.textContent.trim().replace(/\u00a0/g," ");
+    var m = t.match(/^(\d[\d\s]*(?:[.,]\d+)?)(.*)$/);
+    if (!m) return null;
+    var num = parseFloat(m[1].replace(/\s/g,"").replace(",", "."));
+    if (isNaN(num) || num > 9999999 || num < -9999999) return null;
+    return { target: num, suffix: m[2] || "", hasDec: /[.,]\d/.test(m[1]) };
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      var el = en.target, p = parse(el);
+      if (!p) { io.unobserve(el); return; }
+      var start = null, dur = 1500;
+      function step(ts){
+        if (!start) start = ts;
+        var pr = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - pr, 3);
+        var val = p.target * eased;
+        el.textContent = (p.hasDec ? val.toLocaleString("fr-FR", {maximumFractionDigits:1}) : Math.round(val).toLocaleString("fr-FR")) + p.suffix;
+        if (pr < 1) requestAnimationFrame(step);
+        else el.textContent = (p.hasDec ? p.target.toLocaleString("fr-FR", {maximumFractionDigits:1}) : Math.round(p.target).toLocaleString("fr-FR")) + p.suffix;
+      }
+      requestAnimationFrame(step);
+      io.unobserve(el);
+    });
+  }, { threshold: .4 });
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
 
 <script>
 // ===== 1) FOND 3D WEBGL (couche EXCELLENCE ULTRA) =====
